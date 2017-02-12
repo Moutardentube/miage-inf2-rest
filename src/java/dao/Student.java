@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.persistence.ManyToOne;
  * @author ludovic
  */
 @Entity(name="Student")
-public class Student {
+public class Student implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column

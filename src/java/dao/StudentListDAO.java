@@ -1,6 +1,6 @@
 package dao;
 
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.FlushModeType;
@@ -21,7 +21,7 @@ public class StudentListDAO  implements DAO<StudentList> {
     }
     
     @Override
-    public Collection<StudentList> findAll() {
+    public List<StudentList> findAll() {
         TypedQuery<StudentList> q = this.em.createQuery("SELECT l FROM StudentList l", StudentList.class);
 
         return q.getResultList();
@@ -46,6 +46,7 @@ public class StudentListDAO  implements DAO<StudentList> {
     
     public int addStudent(int id, Student entity) {
         StudentList list = this.em.find(StudentList.class, id);
+        System.out.println(list);
         list.addStudent(entity);
         entity.setStudentList(list);
 
