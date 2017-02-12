@@ -5,7 +5,8 @@
  */
 package dao;
 
-import java.util.Collection;
+import java.io.Serializable;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ import javax.persistence.OneToMany;
  * @author ludovic
  */
 @Entity(name="StudentList")
-public class StudentList {
+public class StudentList implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(nullable = false, unique=true)
@@ -29,7 +30,7 @@ public class StudentList {
     private String name;
 
     @OneToMany(mappedBy="studentList", cascade=CascadeType.ALL)
-    private Collection<Student> students;
+    private List<Student> students;
     
     public StudentList() {
         
@@ -56,7 +57,7 @@ public class StudentList {
         this.name = name;
     }
     
-    public Collection<Student> getStudents() {
+    public List<Student> getStudents() {
         return this.students;
     }
     
